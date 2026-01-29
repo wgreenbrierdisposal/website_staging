@@ -273,59 +273,111 @@
         </div>
     </section>
     
-        <!-- Service Updates -->
-    <section id="updates" class="py-5">
+       <!-- Service Updates -->
+    <section id="updates" class="py-4">
       <div class="container">
         <h6 class="text-secondary text-uppercase font-weight-semi-bold mb-2">Service Updates</h6>
         <h2 class="mb-4">Service Alerts, Weather Delays & Notices</h2>
         <p class="mb-3">
-          For the most up-to-date service information, we post updates on our Facebook page.
-          This includes weather-related delays, snow routes, holiday changes, and other service notices.
+          For the most up-to-date service information, we post updates on our Facebook page. This includes weather-related
+          delays, snow routes, holiday changes, and other service notices.
         </p>
     
+        <style>
+          /* Service Updates sizing controls */
+          .updates-card { border-radius: 0.5rem; }
+    
+          /* Responsive Facebook embed container */
+          .fb-embed-wrap {
+            position: relative;
+            width: 100%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            /* Desktop/tablet height (taller = less scrolling) */
+            padding-bottom: 135%;
+            background: #fff;
+          }
+    
+          .fb-embed-wrap iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+          }
+    
+          /* Slightly shorter embed on smaller screens so it doesn't feel endless */
+          @media (max-width: 767.98px) {
+            .fb-embed-wrap { padding-bottom: 110%; }
+          }
+        </style>
+    
         <div class="row">
-          <!-- Facebook Embed -->
-          <div class="col-md-6 mb-4">
-            <div class="bg-light rounded p-3 h-100">
+          <!-- Facebook Embed (wider) -->
+          <div class="col-md-7 mb-4">
+            <div class="bg-light updates-card p-4 h-100">
               <h5 class="mb-3">Latest Updates on Facebook</h5>
     
-              <div style="position: relative; width: 100%; padding-bottom: 120%; height: 0; overflow: hidden; border-radius: 0.5rem;">
+              <div class="fb-embed-wrap">
                 <iframe
                   src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61577266925796&tabs=timeline&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
-                  style="border:none; overflow:hidden; position:absolute; top:0; left:0; width:100%; height:100%;"
                   scrolling="no"
-                  frameborder="0"
                   allowfullscreen="true"
                   allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
                 </iframe>
               </div>
     
-              <small class="text-muted d-block mt-2">
-                If the feed does not load, you can view our Facebook page directly.
-              </small>
+              <div class="d-flex flex-wrap align-items-center justify-content-between mt-3">
+                <small class="text-muted">
+                  If the feed does not load, you can view our Facebook page directly.
+                </small>
+    
+                <a class="btn btn-outline-primary btn-sm mt-2 mt-sm-0"
+                   href="https://www.facebook.com/profile.php?id=61577266925796"
+                   target="_blank" rel="noopener">
+                  <i class="fa fa-facebook mr-2"></i> View on Facebook
+                </a>
+              </div>
             </div>
           </div>
     
-          <!-- Description / Communication -->
-          <div class="col-md-6 mb-4">
-            <div class="bg-light rounded p-3 h-100">
+          <!-- Description / Communication (tighter) -->
+          <div class="col-md-5 mb-4">
+            <div class="bg-light updates-card p-3 h-100">
               <h5 class="mb-3">How We Communicate Updates</h5>
     
               <p class="mb-2">
-                Our Facebook page is the primary place for real-time service alerts. If routes are delayed due to
-                weather, snow, road conditions, or unexpected issues, updates will be posted there.
+                Our Facebook page is the primary place for real-time service alerts. If routes are delayed due to weather,
+                snow, road conditions, or unexpected issues, updates will be posted there.
               </p>
     
               <p class="mb-2">
-                Billing notices, account updates, and important customer-specific information may also be sent
-                directly by email or phone when applicable.
+                Billing notices, account updates, and important customer-specific information may also be sent directly by
+                email or phone when applicable.
               </p>
     
-              <ul class="mb-0 pl-3">
-                <li><strong>Facebook:</strong> Service alerts and route updates</li>
-                <li><strong>Email & Phone:</strong> Billing and account-related notices</li>
-                <li>Questions? Call our office: <strong><a href="tel:13044388051">(304) 438-8051</a></strong></li>
+              <ul class="mb-3 pl-0" style="list-style: none;">
+                <li class="mb-2">
+                  <i class="fa fa-bullhorn mr-2 text-primary"></i>
+                  <strong>Facebook:</strong> Service alerts and route updates
+                </li>
+                <li class="mb-2">
+                  <i class="fa fa-envelope mr-2 text-primary"></i>
+                  <strong>Email &amp; Phone:</strong> Billing and account-related notices
+                </li>
+                <li class="mb-2">
+                  <i class="fa fa-phone mr-2 text-primary"></i>
+                  Questions? Call our office:
+                  <strong><a href="tel:13044388051">(304) 438-8051</a></strong>
+                </li>
               </ul>
+    
+              <a class="btn btn-primary btn-block mb-3"
+                 href="https://www.facebook.com/profile.php?id=61577266925796"
+                 target="_blank" rel="noopener">
+                <i class="fa fa-facebook mr-2"></i> Follow Us on Facebook
+              </a>
     
               <hr class="my-3">
     
@@ -600,6 +652,7 @@
 </body>
 
 </html>
+
 
 
 
