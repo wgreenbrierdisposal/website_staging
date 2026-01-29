@@ -273,7 +273,7 @@
         </div>
     </section>
     
-       <!-- Service Updates -->
+    <!-- Service Updates -->
     <section id="updates" class="py-4">
       <div class="container">
         <h6 class="text-secondary text-uppercase font-weight-semi-bold mb-2">Service Updates</h6>
@@ -284,45 +284,63 @@
         </p>
     
         <style>
-          /* Service Updates sizing controls */
-          .updates-card { border-radius: 0.5rem; }
+          /* ===== Service Updates Styling ===== */
+          .updates-card {
+            border-radius: 0.6rem;
+          }
     
-          /* Responsive Facebook embed container */
+          /* Facebook embed container */
           .fb-embed-wrap {
             position: relative;
             width: 100%;
             height: 0;
             overflow: hidden;
-            border-radius: 0.5rem;
-            /* Desktop/tablet height (taller = less scrolling) */
-            padding-bottom: 135%;
+            border-radius: 0.6rem;
             background: #fff;
+            /* BIG desktop feed */
+            padding-bottom: 200%;
           }
     
           .fb-embed-wrap iframe {
             position: absolute;
-            top: 0; left: 0;
+            inset: 0;
             width: 100%;
             height: 100%;
             border: 0;
           }
     
-          /* Slightly shorter embed on smaller screens so it doesn't feel endless */
+          /* Mobile adjustment so it doesn't feel endless */
           @media (max-width: 767.98px) {
-            .fb-embed-wrap { padding-bottom: 110%; }
+            .fb-embed-wrap {
+              padding-bottom: 120%;
+            }
+          }
+    
+          /* Force white text on primary button */
+          .btn-primary,
+          .btn-primary:hover,
+          .btn-primary:focus {
+            color: #ffffff !important;
           }
         </style>
     
         <div class="row">
-          <!-- Facebook Embed (wider) -->
+          <!-- Facebook Embed (dominant) -->
           <div class="col-md-7 mb-4">
             <div class="bg-light updates-card p-4 h-100">
               <h5 class="mb-3">Latest Updates on Facebook</h5>
     
               <div class="fb-embed-wrap">
                 <iframe
-                  src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61577266925796&tabs=timeline&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
-                  scrolling="no"
+                  src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61577266925796
+                  &tabs=timeline
+                  &width=500
+                  &height=900
+                  &small_header=false
+                  &adapt_container_width=true
+                  &hide_cover=false
+                  &show_facepile=true"
+                  scrolling="yes"
                   allowfullscreen="true"
                   allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
                 </iframe>
@@ -333,16 +351,16 @@
                   If the feed does not load, you can view our Facebook page directly.
                 </small>
     
-                <a class="btn btn-outline-primary btn-sm mt-2 mt-sm-0"
-                   href="https://www.facebook.com/profile.php?id=61577266925796"
-                   target="_blank" rel="noopener">
+                <a href="https://www.facebook.com/profile.php?id=61577266925796"
+                   target="_blank" rel="noopener"
+                   class="btn btn-outline-primary btn-sm mt-2 mt-sm-0">
                   <i class="fa fa-facebook mr-2"></i> View on Facebook
                 </a>
               </div>
             </div>
           </div>
     
-          <!-- Description / Communication (tighter) -->
+          <!-- Communication Info -->
           <div class="col-md-5 mb-4">
             <div class="bg-light updates-card p-3 h-100">
               <h5 class="mb-3">How We Communicate Updates</h5>
@@ -373,9 +391,9 @@
                 </li>
               </ul>
     
-              <a class="btn btn-primary btn-block mb-3"
-                 href="https://www.facebook.com/profile.php?id=61577266925796"
-                 target="_blank" rel="noopener">
+              <a href="https://www.facebook.com/profile.php?id=61577266925796"
+                 target="_blank" rel="noopener"
+                 class="btn btn-primary btn-block mb-3">
                 <i class="fa fa-facebook mr-2"></i> Follow Us on Facebook
               </a>
     
@@ -652,6 +670,7 @@
 </body>
 
 </html>
+
 
 
 
