@@ -273,7 +273,7 @@
         </div>
     </section>
     
-    <!-- Service Updates -->
+       <!-- Service Updates -->
     <section id="updates" class="py-4">
       <div class="container">
         <h6 class="text-secondary text-uppercase font-weight-semi-bold mb-2">Service Updates</h6>
@@ -286,31 +286,37 @@
         <style>
           .updates-card { border-radius: 0.6rem; }
     
-          /* Desktop: shorter height (about half of your previous) */
+          /* Facebook embed wrapper */
           .fb-embed-wrap{
             position: relative;
             width: 100%;
             height: 0;
-            overflow: hidden;
+            overflow: hidden;        /* critical */
             border-radius: 0.6rem;
             background: #fff;
-            padding-bottom: 110%;
+            padding-bottom: 110%;    /* desktop height */
           }
+    
           .fb-embed-wrap iframe{
             position: absolute;
             inset: 0;
-            width: 100%;
-            height: 100%;
+            width: 100% !important;
+            height: 100% !important;
+            max-width: 100% !important;   /* critical */
             border: 0;
           }
     
-          /* Mobile: keep it comfortable to read */
+          /* Mobile fixes */
           @media (max-width: 767.98px){
-            .fb-embed-wrap{ padding-bottom: 120%; }
+            .fb-embed-wrap{
+              padding-bottom: 85%;   /* shorter on mobile */
+            }
           }
     
           /* Force white text on primary button */
-          .btn-primary, .btn-primary:hover, .btn-primary:focus{
+          .btn-primary,
+          .btn-primary:hover,
+          .btn-primary:focus{
             color:#ffffff !important;
           }
         </style>
@@ -323,9 +329,8 @@
     
               <div class="fb-embed-wrap">
                 <iframe
-                  src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61577266925796&tabs=timeline&width=500&height=900&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+                  src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D61577266925796&tabs=timeline&height=900&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
                   scrolling="yes"
-                  frameborder="0"
                   allowfullscreen="true"
                   allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
                 </iframe>
@@ -378,7 +383,7 @@
     
               <a href="https://www.facebook.com/profile.php?id=61577266925796"
                  target="_blank" rel="noopener"
-                class="btn btn-outline-primary btn-sm mt-2 mt-sm-0"
+                 class="btn btn-primary btn-block mb-3">
                 <i class="fa fa-facebook mr-2"></i> Follow Us on Facebook
               </a>
     
@@ -656,6 +661,7 @@
 </body>
 
 </html>
+
 
 
 
