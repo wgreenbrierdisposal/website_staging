@@ -10265,11 +10265,12 @@ section.bg-primary {
 }
 
 #faq .card-header button {
+  background-color: #f8f9fa; /* same as bg-light */
   padding: 1rem 1.25rem;
+  width: 100%;
   font-weight: 600;
   color: #1f5f4a; /* your green */
-  background: none;
-  border: none;
+  border-radius: 0.6rem;
   text-decoration: none;
 }
 
