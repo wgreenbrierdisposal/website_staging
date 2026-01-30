@@ -307,12 +307,12 @@
               transform-origin: top left;
             }
 
-          /* Mobile fixes */
-          @media (max-width: 767.98px){
-            .fb-embed-wrap{
-              padding-bottom: 100%;   /* shorter on mobile */
+            @media (max-width: 768px){
+              .fb-embed-wrap iframe{
+                transform: scaleX(1.00);
+              }
             }
-          }
+
     
           /* Force white text on primary button */
           .btn-primary,
@@ -374,7 +374,7 @@
               <a href="https://www.facebook.com/profile.php?id=61577266925796"
                  target="_blank" rel="noopener"
                  class="btn btn-primary mb-3">
-                <i class="fa fa-facebook mr-2"></i> Follow Us on Facebook
+                <i class="fa fa-facebook mr-2"></i>Follow Us on Facebook
               </a>
     
               <hr class="my-3">
@@ -651,6 +651,7 @@
 </body>
 
 </html>
+
 
 
 
