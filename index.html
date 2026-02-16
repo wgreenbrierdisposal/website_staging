@@ -255,24 +255,24 @@
                         <h5 class="mb-3">Enter Your Payment Details</h5>
                         <form id="pay-form">
                     <div class="form-group">
-                      <label for="invoiceNumber">Invoice Number</label>
+                      <label for="invoiceNumber">Invoice Number:</label>
                       <input
                         type="text"
                         class="form-control"
                         id="invoiceNumber"
                         required
-                        placeholder="Invoice: INV-48392 (NOT Account: ACCT-10473)"
+                        placeholder="EX. INV-12345"
                         autocomplete="off"
                         autocapitalize="characters"
                         spellcheck="false">
                       <small class="form-text text-muted">
-                        Must start with <code>INV-</code> and be 5 digits (example: <code>INV-48392</code>).
+                        Must start with <code>INV-</code>
                       </small>
                     </div>
 
                             <div class="form-group">
                                 <label for="invoiceTotal">Total Amount Due (xx.xx)</label>
-                                <input type="number" step="0.01" min="0" class="form-control" id="invoiceTotal" required>
+                                <input type="number" step="0.01" min="0" class="form-control"  placeholder="EX. 18.92" id="invoiceTotal" required>
                             </div>
                             <button type="submit" class="btn btn-primary text-white" aria-label="Go to secure payment portal">
                                 Go to Secure Payment
@@ -830,6 +830,7 @@
 </body>
 
 </html>
+
 
 
 
