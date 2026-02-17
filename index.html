@@ -227,64 +227,67 @@
         </div>
     </section>
 
-    <!-- Pay Online -->
-    <section id="pay" class="py-5">
-        <div class="container">
-            <h6 class="text-secondary text-uppercase font-weight-semi-bold mb-2">Pay Online</h6>
-            <h2 class="mb-4">Secure Online Bill Pay</h2>
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <p class="mb-3">
-                        Use our secure online payment portal to pay your bill. You’ll need your invoice number
-                        and the total amount due from your bill.
-                    </p>
-                    <p class="mb-2">
-                        When you click “Go to Secure Payment”, you’ll be sent to our CardPointe payment page to
-                        complete your payment.
-                    </p>
-                    <p class="mb-2 small text-muted">
-                        You will be redirected to CardPointe’s secure page. WGDS does not store card or bank details.
-                    </p>
-                    <p class="mb-0 small text-muted">
-                        Payments are made using a 3rd party secure online payment portal:<br>
-                        <code>Available Payment Methods: ACH, Visa, Mastercard, Discover, &amp; American Express</code>
-                    </p>
-                </div>
-                <div class="col-lg-6 mb-4">
-                    <div class="bg-light rounded p-4 h-100">
-                        <h5 class="mb-3">Enter Your Payment Details</h5>
-                        <form id="pay-form">
-                    <div class="form-group">
-                      <label for="invoiceNumber">Invoice Number:</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        id="invoiceNumber"
-                        required
-                        placeholder="EX. INV-12345"
-                        autocomplete="off"
-                        autocapitalize="characters"
-                        spellcheck="false">
-                      <small class="form-text text-muted">
-                        Must start with <code>INV-</code>
-                      </small>
-                    </div>
-
-                            <div class="form-group">
-                                <label for="invoiceTotal">Total Amount Due:</label>
-                                <input type="number" step="0.01" min="0" class="form-control"  placeholder="EX. 18.92" id="invoiceTotal" required>
-                            </div>
-                            <button type="submit" class="btn btn-primary text-white" aria-label="Go to secure payment portal">
-                                Go to Secure Payment
-                            </button>
-                            <p id="pay-error" class="mt-2 small text-danger" style="display:none;"></p>
-                        </form>
-                    </div>
+<!-- Pay Online -->
+<section id="pay" class="py-5">
+    <div class="container">
+        <h6 class="text-secondary text-uppercase font-weight-semi-bold mb-2">Pay Online</h6>
+        <h2 class="mb-4">Secure Online Bill Pay</h2>
+        <div class="row">
+            <div class="col-lg-6 mb-4">
+                <p class="mb-3">
+                    Use our secure online payment portal to pay your bill. You'll need your invoice number
+                    and the total amount due from your bill.
+                </p>
+                <p class="mb-2">
+                    When you click "Go to Secure Payment", you'll be sent to our CardPointe payment page to
+                    complete your payment.
+                </p>
+                <p class="mb-2 small text-muted">
+                    You will be redirected to CardPointe's secure page. WGDS does not store card or bank details.
+                </p>
+                <p class="mb-0 small text-muted">
+                    Payments are made using a 3rd party secure online payment portal:<br>
+                    <code>Available Payment Methods: ACH, Visa, Mastercard, Discover, &amp; American Express</code>
+                </p>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="bg-light rounded p-4 h-100">
+                    <h5 class="mb-3">Enter Your Payment Details</h5>
+                    <form id="pay-form">
+                        <div class="form-group">
+                            <label for="invoiceNumber">Invoice Number:</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="invoiceNumber"
+                                required
+                                value="INV-"
+                                autocomplete="off"
+                                autocapitalize="characters"
+                                spellcheck="false">
+                            <small class="form-text text-muted">
+                                Must start with <code>INV-</code>
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="invoiceTotal">Total Amount Due:</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="invoiceTotal"
+                                required
+                                value="$">
+                        </div>
+                        <button type="submit" class="btn btn-primary text-white" aria-label="Go to secure payment portal">
+                            Go to Secure Payment
+                        </button>
+                        <p id="pay-error" class="mt-2 small text-danger" style="display:none;"></p>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
-    
+    </div>
+</section>
        <!-- Service Updates -->
     <section id="updates" class="py-4 bg-light">
       <div class="container">
@@ -766,7 +769,9 @@
                 }
         
                 // Existing total validation
-                const totalNum = Number(totalRaw);
+              // ✅ Remove dollar sign from total before validation
+                const totalCleaned = totalRaw.replace('$', '');
+                const totalNum = Number(totalCleaned);
                 if (!Number.isFinite(totalNum) || totalNum <= 0) {
                     payError.textContent = 'Please enter a valid number for the total amount.';
                     payError.style.display = 'block';
@@ -830,6 +835,7 @@
 </body>
 
 </html>
+
 
 
 
