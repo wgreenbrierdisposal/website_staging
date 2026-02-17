@@ -741,67 +741,55 @@
         // Footer year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Pay form handler: build CardPointe URL and redirect
-                function validateInvFormat(raw) {
-            let v = (raw || "").trim().toUpperCase();
-        
-            // Must start with INV-
-            if (!v.startsWith("INV-")) {
-                return { ok: false, msg: "Invoice Number must start with INV- (example: INV-48392)." };
-            }
-        
-            // Extract digits after INV-
-            const digits = v.slice(4).replace(/\D/g, "");
-        
-            if (!/^\d{5}$/.test(digits)) {
-                return { ok: false, msg: "Invoice Number must be INV- followed by 5 digits (example: INV-48392)." };
-            }
-        
-            return { ok: true, invoiceNo: digits }; // ← ONLY the 5 digits
+// Pay form handler: build CardPointe URL and redirect
+function validateInvFormat(raw) {
+    const digits = (raw || "").trim().replace(/\D/g, "");
+
+    if (!/^\d{5}$/.test(digits)) {
+        return { ok: false, msg: "Invoice Number must be 5 digits (example: 48392)." };
+    }
+
+    return { ok: true, invoiceNo: digits };
+}
+
+const payForm = document.getElementById('pay-form');
+const payError = document.getElementById('pay-error');
+const basePayUrl = 'https://westerngreenbri.securepayments.cardpointe.com/pay';
+
+if (payForm) {
+    payForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        payError.style.display = 'none';
+        payError.textContent = '';
+
+        const invoiceRaw = document.getElementById('invoiceNumber').value;
+        const totalRaw = document.getElementById('invoiceTotal').value.trim();
+
+        // Validate invoice digits only (INV- is now a visual prepend)
+        const inv = validateInvFormat(invoiceRaw);
+        if (!inv.ok) {
+            payError.textContent = inv.msg;
+            payError.style.display = 'block';
+            return;
         }
 
-        const payForm = document.getElementById('pay-form');
-        const payError = document.getElementById('pay-error');
-        const basePayUrl = 'https://westerngreenbri.securepayments.cardpointe.com/pay';
-        
-        if (payForm) {
-            payForm.addEventListener('submit', function (e) {
-                e.preventDefault();
-                payError.style.display = 'none';
-                payError.textContent = '';
-        
-                const invoiceRaw = document.getElementById('invoiceNumber').value;
-                const totalRaw = document.getElementById('invoiceTotal').value.trim();
-        
-                // ✅ NEW — validate INV format
-                const inv = validateInvFormat(invoiceRaw);
-                if (!inv.ok) {
-                    payError.textContent = inv.msg;
-                    payError.style.display = 'block';
-                    return;
-                }
-        
-                // Existing total validation
-              // ✅ Remove dollar sign from total before validation
-                const totalCleaned = totalRaw.replace('$', '');
-                const totalNum = Number(totalCleaned);
-                if (!Number.isFinite(totalNum) || totalNum <= 0) {
-                    payError.textContent = 'Please enter a valid number for the total amount.';
-                    payError.style.display = 'block';
-                    return;
-                }
-        
-                // ✅ IMPORTANT CHANGE:
-                // Send ONLY the 5-digit number to CardPointe
-                const url = basePayUrl
-                    + '?invoice=' + encodeURIComponent(inv.invoiceNo)
-                    + '&total=' + encodeURIComponent(totalNum.toFixed(2))
-                    + '&billCountry=US';
-        
-                window.location.href = url;
-            });
+        // Total is now a clean number field ($ is a visual prepend)
+        const totalNum = Number(totalRaw);
+        if (!Number.isFinite(totalNum) || totalNum <= 0) {
+            payError.textContent = 'Please enter a valid number for the total amount.';
+            payError.style.display = 'block';
+            return;
         }
 
+        // Send ONLY the 5-digit number to CardPointe
+        const url = basePayUrl
+            + '?invoice=' + encodeURIComponent(inv.invoiceNo)
+            + '&total=' + encodeURIComponent(totalNum.toFixed(2))
+            + '&billCountry=US';
+
+        window.location.href = url;
+    });
+}
         // Contact form: AJAX submit to Formspree (no redirect)
         const contactForm = document.getElementById('contact-form');
         const contactStatus = document.getElementById('contact-status');
@@ -848,6 +836,7 @@
 </body>
 
 </html>
+
 
 
 
