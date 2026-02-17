@@ -54,6 +54,8 @@
 <!-- Scrollspy enabled for active nav highlighting -->
 <body id="home" data-spy="scroll" data-target=".navbar" data-offset="80">
 
+    
+
     <!-- Top Bar (desktop) -->
     <div class="container-fluid bg-dark text-white py-2 d-none d-md-block">
         <div class="container d-flex justify-content-between">
@@ -730,7 +732,15 @@
     <script>
         // Footer year
         document.getElementById('year').textContent = new Date().getFullYear();
-
+        $('a[href^="#"]').on('click', function(e) {
+                const target = $(this.getAttribute('href'));
+                if (target.length) {
+                    e.preventDefault();
+                    $('html, body').animate({
+                        scrollTop: target.offset().top - 75
+                    }, 600, 'swing');
+                }
+            });
         // FIX: Enforce digits-only in invoice number field
         document.getElementById('invoiceNumber').addEventListener('keypress', function(e) {
             if (!/[0-9]/.test(e.key)) {
@@ -839,3 +849,4 @@
 </body>
 
 </html>
+
